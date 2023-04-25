@@ -1,0 +1,10 @@
+exports.NEW_ORDER_CHANNEL_KEY = "new_order";
+exports.UPDATE_ORDER_CHANNEL_KEY = "update_order";
+exports.ORDERS_COUNT = "_orders_count";
+exports.PENDING_ORDERS_COUNT_KEY = "pending_orders_count";
+exports.RECIVED_ORDERS_COUNT_KEY = "recieved_orders_count";
+exports.SHIPPED_ORDERS_COUNT_KEY = "shipped_orders_count";
+exports.COMPLETED_ORDERS_COUNT_KEY = "completed_orders_count";
+exports.CATEGORY_COUNT_KEY = "categories_count";
+exports.PRODUCTS_COUNT_KEY = "products_count";
+exports.USERS_COUNT_KEY = "users_count";
