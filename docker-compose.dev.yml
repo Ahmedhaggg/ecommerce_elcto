@@ -1,0 +1,23 @@
+version: '3'
+services:
+  ecommerce_api:
+    build: 
+      context: "./server"
+      args:
+        - NODE_ENV=development
+    volumes:
+      - ./server/src:/ecommerce/server/src:ro
+      - ./server/images:/ecommerce/server/images
+    command: npm run start:dev
+  # ecommerce_client:
+  #   build: 
+  #     context: "./client"
+  #     args:
+  #       - NODE_ENV=development
+  #   volumes:
+  #     - ./client/src:/ecommerce/client/src
+  #     - /ecommerce/client/node_modules
+  #     - /ecommerce/client/.next
+  #   command: npm run dev
+volumes:
+  images: 

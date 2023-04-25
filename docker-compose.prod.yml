@@ -1,0 +1,18 @@
+version: '2'
+services:
+  ecommerce_api:
+    build: 
+      context: "./server"
+      args:
+        - NODE_ENV=production
+    volumes:
+      - ./server/images:/ecommerce/server/images
+    command: node dist/main.js
+  # ecommerce_client:
+  #   build: 
+  #     context: "./client"
+  #     args:
+  #       - NODE_ENV=production
+  #   command: npm run start
+volumes:
+  images:
