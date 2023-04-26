@@ -7,7 +7,7 @@ services:
         - NODE_ENV=production
     volumes:
       - ./server/images:/ecommerce/server/images
-    command: node dist/main.js
+    command: node src/app.js
   # ecommerce_client:
   #   build: 
   #     context: "./client"
