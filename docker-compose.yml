@@ -50,7 +50,7 @@ services:
   #   restart: unless-stopped
     
   redis: 
-    image: redis
+    image: redis:6.2.12-alpine
     depends_on:
       - db
 volumes:
