@@ -9,7 +9,6 @@ services:
     image: nginx:stable-alpine
     depends_on:
       - ecommerce_api
-      - ecommerce_client
     restart: always
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
@@ -27,18 +26,6 @@ services:
     ports:
       - "4000:4000"
   
-  ecommerce_client:
-    build: 
-      context: "./client/"
-      dockerfile: Dockerfile
-    depends_on:
-      - ecommerce_api
-    env_file:
-      - ./.env
-    ports:
-      - "3000:3000"
-    restart: unless-stopped
-
   # ecommerce_client:
   #   build: 
   #     context: "./client/"
@@ -47,8 +34,10 @@ services:
   #     - ecommerce_api
   #   env_file:
   #     - ./.env
+  #   ports:
+  #     - "3000:3000"
   #   restart: unless-stopped
-    
+
   redis: 
     image: redis:6.2.12-alpine
     depends_on:

@@ -9,19 +9,19 @@ services:
       - ./server/src:/ecommerce/server/src:ro
       - ./server/images:/ecommerce/server/images
     command: npm run start:dev
-  ecommerce_client:
-    build: 
-      context: "./client"
-      args:
-        - NODE_ENV=development
-    volumes:
-      - ./client/src:/ecommerce/client/src
-      - /ecommerce/client/node_modules
-      - /ecommerce/client/.next
-    expose:
-      - "3000"
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-    command: npm run dev
+  # ecommerce_client:
+  #   build: 
+  #     context: "./client"
+  #     args:
+  #       - NODE_ENV=development
+  #   volumes:
+  #     - ./client/src:/ecommerce/client/src
+  #     - /ecommerce/client/node_modules
+  #     - /ecommerce/client/.next
+  #   expose:
+  #     - "3000"
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=true
+  #   command: npm run dev
 volumes:
   images: 
