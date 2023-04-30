@@ -8,11 +8,12 @@ services:
     volumes:
       - ./server/images:/ecommerce/server/images
     command: node src/app.js
-  # ecommerce_client:
-  #   build: 
-  #     context: "./client"
-  #     args:
-  #       - NODE_ENV=production
-  #   command: npm run start
+  ecommerce_client:
+    build: 
+      context: "./client"
+      args:
+        - NODE_ENV=production
+    command: >
+        sh -c "npm run build && npm run start"
 volumes:
   images:
