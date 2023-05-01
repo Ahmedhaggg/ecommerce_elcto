@@ -4,7 +4,6 @@ const { DB } = require(".");
 mongoose
     .connect(DB)
     .then(async () => {
-        console.log(DB) 
         console.log("mongoose connect")
     })
     .catch((err) => {

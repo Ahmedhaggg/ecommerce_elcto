@@ -1,8 +1,17 @@
 let { createClient } = require("redis");
-let REDIS_PORT = 6379;
-let REDIS_HOST = "redis"
-let redisClient = createClient({ url: `redis://${REDIS_HOST}:${REDIS_PORT}`});
-let redisSubscriber  = createClient({ url: `redis://${REDIS_HOST}:${REDIS_PORT}`});
+const { REDIS_HOST, REDIS_PORT, IS_REDIS_SOCKET_CONNECTION, REDIS_PASSWORD } = require(".");
+let Options = IS_REDIS_SOCKET_CONNECTION ? {
+    url: `redis://${REDIS_HOST}:${REDIS_PORT}`
+} : { 
+    password: REDIS_PASSWORD,
+    socket: {
+        host: REDIS_HOST,
+        port: REDIS_PORT
+    }
+}
+
+let redisClient = createClient(Options);
+let redisSubscriber  = createClient(options);
 
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
 redisClient.on("connect", () => console.log("redis connection successfully"));
