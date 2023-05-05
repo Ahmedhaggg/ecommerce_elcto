@@ -36,7 +36,6 @@ exports.index = expressAsyncHandler(
         let { page = 1, categoryId, title } = req.query;
 
         let newProductFilterQuery = new ProductQueryBuilder();
-        newProductFilterQuery.setLimit(page);
         newProductFilterQuery.setCateoryId(categoryId);
         newProductFilterQuery.setTitle(title);
         newProductFilterQuery.setOffset(page);
