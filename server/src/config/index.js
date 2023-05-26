@@ -16,7 +16,10 @@ const {
     REDIS_HOST,
     REDIS_PORT,
     REDIS_PASSWORD = null,
-    REDIS_SOCKET = "false"
+    REDIS_SOCKET = "false",
+    CLOUD_NAME,
+    API_KEY, 
+    API_SECRET
 } = process.env;
 
 let IS_REDIS_SOCKET_CONNECTION = REDIS_SOCKET === "true" ? true : false;
@@ -33,5 +36,8 @@ module.exports = {
     REDIS_PORT,
     REDIS_SOCKET,
     IS_REDIS_SOCKET_CONNECTION,
-    REDIS_PASSWORD
+    REDIS_PASSWORD,
+    CLOUD_NAME,
+    API_KEY, 
+    API_SECRET
 };

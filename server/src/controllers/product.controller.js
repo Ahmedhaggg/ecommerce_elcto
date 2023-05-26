@@ -10,6 +10,7 @@ const ProductQueryBuilder = require("../utils/queryBuilder/ProductQueryBuilder")
 
 exports.store = expressAsyncHandler(
     async (req, res, next) => {
+        console.log("req file", req.file)
         let { title, categoryId, price, description, isAvailable } = req.body;
         let slug = slugify(title);
         let buffer = req.file.buffer;
@@ -18,9 +19,10 @@ exports.store = expressAsyncHandler(
         let newProduct = await productRepository.create({ 
             title, categoryId, image: fileName, price, isAvailable, description, slug
         });
+        console.log("req product", newProduct)
 
         let saveImage = await uploader.saveFile(buffer, fileName);
-        
+        console.log(saveImage)
         if (!saveImage)
             throw new BadRequestError("please can send image again")
 

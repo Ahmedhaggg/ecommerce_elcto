@@ -1,15 +1,17 @@
 let { createClient } = require("redis");
 const { REDIS_HOST, REDIS_PORT, IS_REDIS_SOCKET_CONNECTION, REDIS_PASSWORD } = require(".");
-let options = IS_REDIS_SOCKET_CONNECTION ? {
-    url: `redis://${REDIS_HOST}:${REDIS_PORT}`
-} : { 
+console.log("is redis connection", IS_REDIS_SOCKET_CONNECTION)
+let options =  IS_REDIS_SOCKET_CONNECTION ? { 
     password: REDIS_PASSWORD,
+    username: "elwinsh",
     socket: {
         host: REDIS_HOST,
         port: REDIS_PORT
     }
-}
-
+} : {
+    url: `redis://${REDIS_HOST}:${REDIS_PORT}`
+};
+console.log(options)
 let redisClient = createClient(options);
 let redisSubscriber  = createClient(options);
 

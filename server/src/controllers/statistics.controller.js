@@ -17,7 +17,8 @@ exports.index = expressAsyncHandler(
             "dashboard_statistics:completedOrdersCount",
             "dashboard_statistics:usersCount"
         ]);
-    
+        
+        
         if (cachedCounts.every(c => c !== null)) {
             const [categoriesCount, productsCount, pendingOrdersCount, shippedOrdersCount, completedOrdersCount, usersCount] = cachedCounts.map(c => parseInt(c));
             return res.status(HttpStatusCode.OK).json({

@@ -9,7 +9,6 @@ const defaultError = {
 
 module.exports = (err, req, res, next) => {
     console.log(err)
-    console.log(err)
 
     // to check is error from my custome handling exception or internal server Error
     let errorFormat = err.success == false ? err : defaultError;
