@@ -14,17 +14,16 @@ exports.store = expressAsyncHandler(
         let { title, categoryId, price, description, isAvailable } = req.body;
         let slug = slugify(title);
         let buffer = req.file.buffer;
-        let fileName = `${Date.now()}${req.file.originalname}`;
-
-        let newProduct = await productRepository.create({ 
-            title, categoryId, image: fileName, price, isAvailable, description, slug
-        });
-        console.log("req product", newProduct)
+        let fileName = `${Date.now()}${slug}`;
 
         let saveImage = await uploader.saveFile(buffer, fileName);
-        console.log(saveImage)
+
         if (!saveImage)
             throw new BadRequestError("please can send image again")
+
+        let newProduct = await productRepository.create({ 
+            title, categoryId, image: saveImage.secure_url, price, isAvailable, description, slug
+        });
 
         res.status(200).json({
             success: true,

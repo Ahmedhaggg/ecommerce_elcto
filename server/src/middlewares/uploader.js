@@ -24,7 +24,18 @@ exports.saveInMemory = (field) => multer({
     }
 }).single(field);
 
-exports.saveFile = async (buffer, key = null) => await cloudinary.uploader.upload('data:image/jpeg;base64,' + buffer.toString('base64'), { resource_type: 'auto' });
+exports.saveFile = async (buffer, key = null) => {
+    try {
+        return await cloudinary.uploader
+        .upload('data:image/jpeg;base64,' + buffer.toString('base64'), {
+            resource_type: 'auto', public_id: key, overwrite: true
+        });
+    } catch (error) {
+        return null;
+    }
+
+}
+    
 
 
 exports.removeFile = async key => await cloudinary.uploader.destroy(key)
