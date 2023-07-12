@@ -102,7 +102,7 @@ exports.updateProductImage = expressAsyncHandler(
         if (!saveNewImage)
             throw new BadRequestError("something went wrong when save the new image")
 
-        await productRepository.update({ slug }, { image: newImageName });
+        await productRepository.update({ slug }, { image: saveNewImage.secure_url });
 
         await uploader.removeFile(product.image)
         
