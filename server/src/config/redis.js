@@ -3,7 +3,7 @@ const { REDIS_HOST, REDIS_PORT, IS_REDIS_SOCKET_CONNECTION, REDIS_PASSWORD } = r
 console.log("is redis connection", IS_REDIS_SOCKET_CONNECTION)
 let options =  IS_REDIS_SOCKET_CONNECTION ? { 
     password: REDIS_PASSWORD,
-    username: "elwinsh",
+    username: "default",
     socket: {
         host: REDIS_HOST,
         port: REDIS_PORT
